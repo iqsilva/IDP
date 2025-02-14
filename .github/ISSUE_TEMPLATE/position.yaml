@@ -1,0 +1,32 @@
+name: "Position"
+description: "template for the position cards"
+assignees: "iqsilva"
+labels: "Long Term Goal"
+title: 🎯
+body:
+  - type: markdown
+    attributes:
+      value: "## 🎯 What"
+  - type: markdown
+    attributes:
+      value: "<describe the goal here>"
+  - type: markdown
+    attributes:
+      value: "## ❤ Why?"
+  - type: markdown
+    attributes:
+      value: "<why this is important>"
+  - type: markdown
+    attributes:
+      value: "## 🧑‍🏫 Sponsors, Mentors, Collaborators"
+  - type: markdown
+    attributes:
+      value: "<who can support you>"
+  - type: markdown
+    attributes:
+      value: "## 📋 Actions"
+  - type: markdown
+    attributes:
+      value: "| <who can support you>
+      <insert a list of related actions or short-term goals if this is a long term one>"
+
