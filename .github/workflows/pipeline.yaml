@@ -28,7 +28,7 @@ jobs:
             }
           }
       env:
-        GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - run: "echo 'Projects: ${{ steps.list_projects.outputs.data }}'"
       # id: get_items
