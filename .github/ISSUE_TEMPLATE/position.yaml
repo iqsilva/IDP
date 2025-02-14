@@ -7,9 +7,10 @@ body:
   - type: markdown
     attributes:
       value: "## 🎯 What"
-  - type: markdown
+  - type: input
+    id: name
     attributes:
-      value: "<describe the goal here>"
+    label: Last name
   - type: markdown
     attributes:
       value: "## ❤ Why?"
