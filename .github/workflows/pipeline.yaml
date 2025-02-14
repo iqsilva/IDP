@@ -62,7 +62,7 @@ jobs:
         # Filter items that are in the "In Progress" column
         in_progress_items = [
             item for item in data['viewer']['projectV2']['items']['nodes']
-            if any(field.get('id') == "PVTFSV_lQHOAk5qjM4AyQWPzgXWvN3OERSYcw" for field in item['fieldValues']['nodes'])
+            if any(field.get('id') == "PVTFSV_lQHOAk5qjM4AyQWPzgXXNy_OERYS9g" for field in item['fieldValues']['nodes'])
         ]
 
         # Check if there are any items in the "In Progress" column
