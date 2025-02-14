@@ -1,0 +1,29 @@
+body:
+- type: markdown
+  attributes:
+    value: "## Summary"
+- type: markdown
+  attributes:
+    value: text here
+- type: markdown
+  attributes:
+    value: "## 🏫 What I hope to learn"
+    - type: markdown
+      attributes:
+        value: text here
+- type: markdown
+  attributes:
+    value: "## 📏 Success Metrics"
+    - type: markdown
+      attributes:
+        value: Conclude the list of courses of this formation.
+- type: markdown
+  attributes:
+    value: "## 📚 Resources that I need"
+    - type: checkboxes
+      id: disciplines
+      attributes:
+        label: Courses completed
+        options:
+          - label: Course 1
+          - label: Course 2
