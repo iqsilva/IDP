@@ -3,7 +3,7 @@ name: "Discipline"
 description: "template for the discipline cards"
 assignees: "iqsilva"
 labels: "Short Term Goal"
-projects: "My IDP"
+projects: "github/1"
 title: 📕 📗 📘 📙
 body:
   - type: markdown
