@@ -65,15 +65,18 @@ jobs:
             if any(field.get('id') == "PVTFSV_lQHOAk5qjM4AyQWPzgXXNy_OERYS9g" for field in item['fieldValues']['nodes'])
         ]
 
+        # Collect titles of the items in the "In Progress" column
+        titles = [item['content']['title'] for item in in_progress_items]
+
         # Check if there are any items in the "In Progress" column
-        if in_progress_items:
-            # Print the number of items found
-            print(f"There are {len(in_progress_items)} items in the 'In Progress' column.")
+        if titles:
+            # Format the titles into a single string
+            titles_str = ", ".join(titles)
             
             # Send a notification via IFTTT
             requests.post(
                 "https://maker.ifttt.com/trigger/notification_github/with/key/lg7s5PhDS4NWUXwbcdSAMoLyDchR0mstR_sIv2dkk-B",
-                json={"value1": "In Progress Items", "value2": f"You have {len(in_progress_items)} items to study today."}
+                json={"value1": "In Progress Items", "value2": f"You have the following items to study today: {titles_str}"}
             )
         else:
             # Print a message if no items are found
