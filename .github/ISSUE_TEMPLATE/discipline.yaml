@@ -1,5 +1,10 @@
 # AI-Assisted
-
+name: "discipline"
+description: "template for the discipline cards"
+assignes: "iqsilva"
+labels: "Short Term Goal"
+projects: "github/4"
+title: 📕 📗 📘 📙
 body:
   - type: markdown
     attributes:
