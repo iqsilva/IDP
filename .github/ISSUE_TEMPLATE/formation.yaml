@@ -25,6 +25,8 @@ body:
   - type: markdown
     attributes:
       value: "## 📚 Resources that I need"
-  - type: markdown
+  - type: checkboxes
+    id: disciplines
     attributes:
-      value: "link here"
+      options:
+        - label: "Course 1"
