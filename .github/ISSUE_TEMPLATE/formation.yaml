@@ -2,7 +2,7 @@ name: "Formation"
 description: "template for the formation cards"
 assignees: "iqsilva"
 labels: "Short Term Goal"
-title: 📚 Formação
+title: "📚 Formação"
 body:
   - type: markdown
     attributes:
@@ -26,7 +26,8 @@ body:
     attributes:
       value: "## 📚 Resources that I need"
   - type: checkboxes
-    id: disciplines
+    id: formation
     attributes:
+      label: "link"
       options:
         - label: "Course 1"
