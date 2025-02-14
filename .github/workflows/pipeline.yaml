@@ -1,0 +1,30 @@
+name: Notify In Progress Items
+
+on:
+  schedule:
+    - cron: '15 15 * * *' # Executa todos os dias às 15:10 UTC
+  workflow_dispatch: # Permite disparo manual
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Get Project Items via GraphQL
+      id: get_items
+      run: |
+        ITEMS=$(curl -s -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"query": "query { viewer { projectV2(number: 4) { items(first: 100) { nodes { id content { __typename ... on Issue { url title } ... on PullRequest { url title } } fieldValues(first: 10) { nodes { ... on ProjectV2ItemFieldSingleSelectValue { name id } } } } } } } }"}' \
+          https://api.github.com/graphql)
+        echo "$ITEMS" | jq -r '.data.viewer.projectV2.items.nodes[] | select(.fieldValues.nodes[].id == "PVTFSV_lQHOAk5qjM4AyQWPzgXWvN3OERSYcw") | .content.url' > items.txt
+        echo "::set-output name=items::$(cat items.txt)"
+
+    - name: Send Notification via IFTTT
+      if: steps.get_items.outputs.items != ''
+      run: |
+        curl -X POST -H "Content-Type: application/json" \
+          -d '{"value1":"In Progress Items", "value2":"${{ steps.get_items.outputs.items }}"}' \
+          https://maker.ifttt.com/trigger/notification_github/with/key/lg7s5PhDS4NWUXwbcdSAMoLyDchR0mstR_sIv2dkk-B
