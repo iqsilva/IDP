@@ -59,10 +59,10 @@ jobs:
         # Parse the JSON data from the GraphQL query output
         data = json.loads('''${{ steps.get_items.outputs.data }}''')
 
-        # Filter items that are in the "In Progress" column
+        # Filter items that have a field with the name "In Progress"
         in_progress_items = [
             item for item in data['viewer']['projectV2']['items']['nodes']
-            if any(field.get('id') == "PVTFSV_lQHOAk5qjM4AyQWPzgXXNy_OERYS9g" for field in item['fieldValues']['nodes'])
+            if any(field.get('name') == "In Progress" for field in item['fieldValues']['nodes'])
         ]
 
         # Collect titles of the items in the "In Progress" column
