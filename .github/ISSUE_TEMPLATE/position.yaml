@@ -8,9 +8,9 @@ body:
     attributes:
       value: "## 🎯 What"
   - type: input
-    id: name
+    id: surname
     attributes:
-    label: Last name
+      label: Last name
   - type: markdown
     attributes:
       value: "## ❤ Why?"
