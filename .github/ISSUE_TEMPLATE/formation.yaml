@@ -26,5 +26,5 @@ body:
     attributes:
       value: "## 📚 Resources that I need"
   - type: markdown
-  attributes:
-    value: "link here"
+    attributes:
+      value: "link here"
