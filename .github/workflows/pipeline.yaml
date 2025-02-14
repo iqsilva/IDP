@@ -14,41 +14,58 @@ jobs:
 
     - name: Get Project Items via GraphQL
       uses: octokit/graphql-action@v2.x
-      id: get_items
+      id: list_projects
       with:
         query: |
           query {
             viewer {
-              projectV2(number: 4) {
-                items(first: 100) {
-                  nodes {
-                    id
-                    content {
-                      __typename
-                      ... on Issue {
-                        url
-                        title
-                      }
-                      ... on PullRequest {
-                        url
-                        title
-                      }
-                    }
-                    fieldValues(first: 10) {
-                      nodes {
-                        ... on ProjectV2ItemFieldSingleSelectValue {
-                          name
-                          id
-                        }
-                      }
-                    }
-                  }
+              projectsV2(first: 10) {
+                nodes {
+                  number
+                  title
                 }
               }
             }
           }
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: "echo 'Projects: ${{ steps.list_projects.outputs.data }}'"
+      # id: get_items
+      # with:
+      #   query: |
+      #     query {
+      #       viewer {
+      #         projectV2(number: 4) {
+      #           items(first: 100) {
+      #             nodes {
+      #               id
+      #               content {
+      #                 __typename
+      #                 ... on Issue {
+      #                   url
+      #                   title
+      #                 }
+      #                 ... on PullRequest {
+      #                   url
+      #                   title
+      #                 }
+      #               }
+      #               fieldValues(first: 10) {
+      #                 nodes {
+      #                   ... on ProjectV2ItemFieldSingleSelectValue {
+      #                     name
+      #                     id
+      #                   }
+      #                 }
+      #               }
+      #             }
+      #           }
+      #         }
+      #       }
+      #     }
+      # env:
+      #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Filter and Send Notification via IFTTT
       run: |
