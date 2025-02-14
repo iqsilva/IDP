@@ -25,8 +25,8 @@ body:
   - type: markdown
     attributes:
       value: "## 📋 Actions"
-  - type: markdown
+  - type: textarea
     attributes:
-      value: "| <who can support you>
+      label: "| <who can support you>
       <insert a list of related actions or short-term goals if this is a long term one>"
 
