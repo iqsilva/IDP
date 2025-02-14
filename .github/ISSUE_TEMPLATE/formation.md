@@ -2,7 +2,7 @@ name: "Formation"
 description: "template for the formation cards"
 assignees: "iqsilva"
 labels: "Short Term Goal"
-title: 📚
+title: 📚 Formação
 body:
   - type: markdown
     attributes:
