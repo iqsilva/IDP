@@ -19,8 +19,9 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{"query": "query { viewer { projectV2(number: 4) { items(first: 100) { nodes { id content { __typename ... on Issue { url title } ... on PullRequest { url title } } fieldValues(first: 10) { nodes { ... on ProjectV2ItemFieldSingleSelectValue { name id } } } } } } } }"}' \
           https://api.github.com/graphql)
-        echo "$ITEMS" | jq -r '.data.viewer.projectV2.items.nodes[] | select(.fieldValues.nodes[].id == "PVTFSV_lQHOAk5qjM4AyQWPzgXWvN3OERSYcw") | .content.url' > items.txt
-        echo "::set-output name=items::$(cat items.txt)"
+        echo "Response: $ITEMS"
+#        echo "$ITEMS" | jq -r '.data.viewer.projectV2.items.nodes[] | select(.fieldValues.nodes[].id == "PVTFSV_lQHOAk5qjM4AyQWPzgXWvN3OERSYcw") | .content.url' > items.txt
+#        echo "::set-output name=items::$(cat items.txt)"
 
     - name: Send Notification via IFTTT
       if: steps.get_items.outputs.items != ''
