@@ -50,12 +50,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_TOKEN }}
 
-    - name: Filter and Send Notification via IFTTT
+    - name: Check and Send Notification via IFTTT
       run: |
-        ITEMS=$(echo "${{ steps.get_items.outputs.data }}" | jq -r '.data.viewer.projectV2.items.nodes[] | select(.fieldValues.nodes[].id == "PVTFSV_lQHOAk5qjM4AyQWPzgXWvN3OERSYcw") | .content.url' | paste -sd ",")
-        if [ -n "$ITEMS" ]; then
+        HAS_ITEMS=$(echo "${{ steps.get_items.outputs.data }}" | jq -e '.data.viewer.projectV2.items.nodes[] | select(.fieldValues.nodes[].id == "PVTFSV_lQHOAk5qjM4AyQWPzgXWvN3OERSYcw")' > /dev/null && echo "yes" || echo "no")
+        if [ "$HAS_ITEMS" = "yes" ]; then
           curl -X POST -H "Content-Type: application/json" \
-            -d "{\"value1\":\"In Progress Items\", \"value2\":\"$ITEMS\"}" \
+            -d '{"value1":"In Progress Items", "value2":"There are items in the In Progress column."}' \
             https://maker.ifttt.com/trigger/notification_github/with/key/lg7s5PhDS4NWUXwbcdSAMoLyDchR0mstR_sIv2dkk-B
         else
           echo "No items in 'In Progress' column."
