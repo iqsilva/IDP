@@ -2,7 +2,7 @@ name: Notify In Progress Items
 
 on:
   schedule:
-    - cron: '30 15 * * *' # Executa todos os dias às 15:30 UTC
+    - cron: '0 9 * * 1' # Executa toda segunda-feira às 9:00 UTC
   workflow_dispatch: # Permite disparo manual
 
 jobs:
@@ -47,8 +47,8 @@ jobs:
               }
             }
           }
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Filter and Send Notification via IFTTT
       run: |
