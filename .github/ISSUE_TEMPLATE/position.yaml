@@ -2,7 +2,7 @@ name: "Position"
 description: "template for the position cards"
 assignees: "iqsilva"
 labels: "Long Term Goal"
-title: 🎯
+title: 💻
 body:
   - type: markdown
     attributes:
@@ -27,5 +27,5 @@ body:
       value: "## 📋 Actions"
   - type: textarea
     attributes:
-      label: "<insert a list of related actions or short-term goals if this is a long term one>"
+      label: "To work towards this goal, I intend to:"
 
